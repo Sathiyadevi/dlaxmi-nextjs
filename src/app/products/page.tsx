@@ -1,7 +1,6 @@
+import ProductCard from '@/src/components/ProductCard';
+import { Product } from '@/src/types/product';
 import React from 'react';
-import ProductCard from '@/components/ProductCard';
-import { Product } from '@/types/product';
-
 const products: Product[] = [
   { title: 'CNC Chicken Cutting Machine', desc: 'Precision automated cutting system designed for efficiency and safety in poultry processing.', img: '/products/cnc-chicken-cutting-machine.svg' },
   { title: 'Smart Automation Controller', desc: 'Industrial controller for adaptive control in manufacturing lines.', img: '/products/automation-controller.svg' },

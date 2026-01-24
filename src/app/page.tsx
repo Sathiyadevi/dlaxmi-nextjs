@@ -1,7 +1,7 @@
 import React from 'react';
-import Hero from '@/components/Hero';
-import ProductCarousel from '@/components/ProductCarousel';
-import { Product } from '@/types/product';
+import { Product } from '../types/product';
+import Hero from '../components/Hero';
+import ProductCarousel from '../components/ProductCarousel';
 
 const products: Product[] = [
   { title: 'CNC Chicken Cutting Machine', desc: 'Precision automated cutting system designed for efficiency and safety in poultry processing.', img: '/products/cnc-chicken-cutting-machine.svg' },
