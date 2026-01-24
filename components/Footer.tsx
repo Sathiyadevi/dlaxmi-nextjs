@@ -1,9 +1,13 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white mt-20">
-      <div className="max-w-7xl mx-auto px-6 py-6 text-center text-sm">
-        © {new Date().getFullYear()} Dlaxmi Infotech LLP. All rights reserved.
-      </div>
-    </footer>
+    <footer className="bg-gray-950 py-8 text-center text-gray-400">
+  <div className="flex flex-col items-center gap-2">
+    <div className="flex items-center">
+      <div className="ml-3 text-white font-semibold">DLAXMI INFOTECH LLP</div>
+    </div>
+    <div>© {new Date().getFullYear()} DLAXMI INFOTECH LLP. All Rights Reserved.</div>
+    <div className="text-sm mt-1">Contact: Sathiyadevi Murugesan (Founder) | (+91) 8438321560 </div>
+  </div>
+</footer>
   );
 }
