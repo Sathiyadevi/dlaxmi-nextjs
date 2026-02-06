@@ -1,21 +1,18 @@
-import '../styles/globals.css';
-import type { ReactNode } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import './globals.css';
 
 export const metadata = {
   title: 'DLAXMI INFOTECH LLP',
-  description: 'Discover. Develop. Dominate. — R&D & Industrial Automation'
+  description: 'Research-driven R&D Innovation Lab',
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+      <body className="bg-white text-gray-900">
+        {children}
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
