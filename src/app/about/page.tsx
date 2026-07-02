@@ -4,6 +4,7 @@ import MissionVision from "@/components/MissionVision";
 import ResearchAreas from "@/components/ResearchAreas";
 import ResearchProcess from "@/components/ResearchProcess";
 import WhyChooseUs from "@/components/WhyChooseUs"
+import Collaborate from "@/components/Collaborate";
 
 export default function AboutPage() {
   return (
@@ -19,6 +20,8 @@ export default function AboutPage() {
       <ResearchProcess/>
 
       <WhyChooseUs/>
+
+      <Collaborate/>
 
     </main>
   );
