@@ -12,7 +12,7 @@ const Hero = () => {
       <div className="absolute -top-32 -right-32 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] lg:w-[600px] lg:h-[600px] bg-blue-500/10 rounded-full blur-3xl" /> 
       <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-3xl" />
 
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 sm:py-20 md:py-24 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ">
+      <div className="relative max-w-[1700px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-16 sm:py-20 md:py-24 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 xl:gap-32 items-center">
 
         {/* LEFT CONTENT */}
         <motion.div
@@ -22,16 +22,16 @@ const Hero = () => {
         className="order-1 lg:order-1 text-center lg:text-left"
         >
           <h1 className="className= text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900 ">
-            Engineering Intelligent Systems
-            <span className="block bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              for the Future
+            Engineering Innovation 
+            <span className="block mt-1 text-4xl sm:text-5xl lg:text-6xl bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Through Research
             </span>
           </h1>
 
           <p className="mt-6 text-base sm:text-lg md:text-xl leading-7 sm:leading-8 text-gray-600 max-w-xl mx-auto lg:mx-0 ">
-            DLAXMI INFOTECH LLP is a research-driven innovation lab
-            specializing in Automation, IoT, and Applied Engineering —
-            transforming advanced concepts into scalable technological solutions.
+           DLAXMI INFOTECH LLP is a research and development company dedicated to solving real-world challenges through engineering innovation. 
+           We combine Artificial Intelligence, Automation, Healthcare, IoT, Food Technology, and Applied Engineering to create practical, 
+           scalable, and impactful solutions for society and industry.
           </p>
 
           {/* Authority Points */}
@@ -72,7 +72,7 @@ const Hero = () => {
         lg:mt-0
         ">
         
-          <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[520px] lg:max-w-[560px] aspect-square mx-auto rounded-3xl overflow-hidden">
+          <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[620px] lg:max-w-[660px] aspect-square mx-auto rounded-3xl overflow-hidden">
 
             <Image
               src="/images/hero-tech.jpg"
