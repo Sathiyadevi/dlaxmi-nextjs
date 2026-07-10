@@ -87,7 +87,7 @@ export default function Collaborate() {
       <div className="absolute -top-20 -left-20 w-96 h-96 bg-violet-500/10 rounded-full blur-[120px]" />
       <div className="absolute bottom-0 right-0 w-[420px] h-[420px] bg-cyan-500/10 rounded-full blur-[140px]" />
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 xl:px-16">
 
         {/* Heading */}
 
@@ -150,7 +150,7 @@ export default function Collaborate() {
         </motion.div>
                 {/* Collaboration Cards */}
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 items-stretch">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 xl:gap-24 items-stretch">
 
           {collaborations.map((item, index) => {
 

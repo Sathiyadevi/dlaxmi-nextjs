@@ -86,7 +86,7 @@ export default function WhyChooseUs() {
 
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 xl:px-16">
 
         {/* Heading */}
 
@@ -147,7 +147,7 @@ export default function WhyChooseUs() {
 
         {/* Cards */}
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 items-stretch">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 xl:gap-24  items-stretch">
 
           {features.map((feature, index) => {
 

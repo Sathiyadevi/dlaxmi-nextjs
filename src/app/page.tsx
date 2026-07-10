@@ -1,6 +1,6 @@
-import Hero from "@/components/Hero";
-import ResearchDomains from "@/components/ResearchDomains";
-import WhyUs from "@/components/WhyUs";
+import Hero from "@/components/hero/Hero";
+import ResearchDomains from "@/components/hero/ResearchDomains";
+import WhyUs from "@/components/hero/WhyUs";
 
 
 const HomePage = () => {

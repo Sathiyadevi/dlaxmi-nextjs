@@ -5,7 +5,7 @@ import { Target, Eye } from "lucide-react";
 export default function MissionVision() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-white via-indigo-50/30 to-white py-24">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-10 xl:px-16">
 
         {/* Section Heading */}
 
@@ -29,7 +29,7 @@ export default function MissionVision() {
 
         {/* Cards */}
 
-        <div className="mt-24 grid gap-10 lg:grid-cols-2">
+        <div className="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-24">
 
           {/* Mission Card */}
 
@@ -43,6 +43,8 @@ export default function MissionVision() {
             border-gray-200
             bg-white
             p-10
+            lg:p-12
+            min-h-[620px]
             shadow-lg
             transition-all
             duration-300
@@ -54,7 +56,7 @@ export default function MissionVision() {
 
             <div className="absolute left-0 top-0 h-full w-2 bg-indigo-600"></div>
 
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600">
+            <div className="flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600">
 
               <Target className="h-8 w-8" />
 
@@ -63,7 +65,7 @@ export default function MissionVision() {
                 Research Driven
             </span>
 
-            <h3 className="mt-8 text-3xl font-bold text-gray-900">
+            <h3 className="mt-8 text-4xl lg:text-5xl font-bold text-gray-900">
               Our Mission
             </h3>
 
@@ -97,6 +99,8 @@ export default function MissionVision() {
             border-gray-200
             bg-white
             p-10
+            lg:p-12
+            min-h-[620px]
             shadow-lg
             transition-all
             duration-300
@@ -108,7 +112,7 @@ export default function MissionVision() {
 
             <div className="absolute left-0 top-0 h-full w-2 bg-purple-600"></div>
 
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-purple-100 text-purple-600">
+            <div className="flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-2xl bg-purple-100 text-purple-600">
 
               <Eye className="h-8 w-8" />
 
@@ -117,7 +121,7 @@ export default function MissionVision() {
                 Research Driven
             </span>
 
-            <h3 className="mt-8 text-3xl font-bold text-gray-900">
+            <h3 className="mt-8 text-4xl lg:text-5xl font-bold text-gray-900">
               Our Vision
             </h3>
 

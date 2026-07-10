@@ -58,7 +58,7 @@ const process = [
 export default function ResearchProcess() {
   return (
     <section className="py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-10 xl:px-16">
 
         {/* Heading */}
 
