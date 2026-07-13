@@ -137,7 +137,7 @@ export default function ResearchDomains() {
       <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-violet-500/10 blur-[120px]" />
       <div className="absolute bottom-0 -right-24 h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-[140px]" />
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-screen-2xl mx-auto px-8 xl:px-12">
 
         {/* Heading */}
 
@@ -174,132 +174,132 @@ export default function ResearchDomains() {
         <div className="space-y-28">
             {domains.map((domain, index) => {
 
-  const Icon = domain.icon;
-  const left = index % 2 === 0;
+              const Icon = domain.icon;
+              const left = index % 2 === 0;
 
-  return (
+              return (
 
-    <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.8,
-        delay: index * 0.1,
-      }}
-      className={`grid lg:grid-cols-2 gap-28 items-center ${
-        left ? "" : "lg:[&>*:first-child]:order-2"
-      }`}
-    >
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.8,
+                    delay: index * 0.1,
+                  }}
+                  className={`grid lg:grid-cols-[0.9fr_1.1fr] gap-10 xl:gap-16 items-center ${
+                    left ? "" : "lg:[&>*:first-child]:order-2"
+                  }`}
+                >
 
-      {/* Illustration Side */}
+                  {/* Illustration Side */}
 
-      <motion.div
-        whileHover={{ scale: 1.03 }}
-        transition={{ duration: 0.4 }}
-        className="relative flex justify-center items-center -translate-y-6"
-      >
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.4 }}
+                    className="relative flex justify-center items-center -translate-y-6 lg:translate-x-6"
+                  >
 
-        <div className={`relative h-[300px] w-[300px] rounded-full bg-gradient-to-br ${domain.color} p-[2px] shadow-[0_0_80px_rgba(99,102,241,0.15)]`}>
-            <motion.div
-            animate={{ rotate: 360 }}
-            transition={{
-                duration: 40,
-                repeat: Infinity,
-                ease: "linear",
-            }}
-            className="absolute h-[330px] w-[330px] rounded-full border border-indigo-200/40"
-            />
+                    <div className={`relative h-[380px] w-[380px] xl:h-[440px] xl:w-[440px] rounded-full bg-gradient-to-br ${domain.color} p-[2px] shadow-[0_0_80px_rgba(99,102,241,0.15)]`}>
+                        <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{
+                            duration: 40,
+                            repeat: Infinity,
+                            ease: "linear",
+                        }}
+                        className="absolute h-[410px] w-[410px] rounded-full border border-indigo-200/40"
+                        />
 
-            <motion.div
-            animate={{ rotate: -360 }}
-            transition={{
-                duration: 28,
-                repeat: Infinity,
-                ease: "linear",
-            }}
-            className="absolute h-[250px] w-[250px] rounded-full border border-cyan-200/50"
-            />
+                        <motion.div
+                        animate={{ rotate: -360 }}
+                        transition={{
+                            duration: 28,
+                            repeat: Infinity,
+                            ease: "linear",
+                        }}
+                        className="absolute h-[320px] w-[320px] rounded-full border border-cyan-200/50"
+                        />
 
-          <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
+                      <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
 
-            <div className={`flex h-28 w-28 items-center justify-center rounded-full ${domain.bg}`}>
+                        <div className={`flex h-28 w-28 items-center justify-center rounded-full ${domain.bg}`}>
 
-              <Icon className={`h-14 w-14 ${domain.iconColor}`} />
+                          <Icon className={`h-14 w-14 ${domain.iconColor}`} />
 
-            </div>
+                        </div>
 
-          </div>
+                      </div>
 
-        </div>
+                    </div>
 
-      </motion.div>
+                  </motion.div>
 
-      {/* Content Side */}
+                  {/* Content Side */}
 
-      <div>
+                  <div className="max-w-2xl">
 
-        <div className="inline-flex items-center rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 mb-6">
-          Research Domain {String(index + 1).padStart(2, "0")}
-        </div>
+                    <div className="inline-flex items-center rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 mb-6">
+                      Research Domain {String(index + 1).padStart(2, "0")}
+                    </div>
 
-        <h3 className="text-4xl font-bold text-slate-900 mb-6">
-          {domain.title}
-        </h3>
+                    <h3 className="text-4xl xl:text-5xl font-bold text-slate-900 mb-6">
+                      {domain.title}
+                    </h3>
 
-        <div className={`w-24 h-1 rounded-full bg-gradient-to-r ${domain.color} mb-8`} />
+                    <div className={`w-24 h-1 rounded-full bg-gradient-to-r ${domain.color} mb-8`} />
 
-        <p className="text-lg leading-8 text-slate-600 mb-8">
-          {domain.description}
-        </p>
+                    <p className="text-xl leading-9 text-slate-600 mb-8">
+                      {domain.description}
+                    </p>
 
-                {/* Feature Chips */}
+                            {/* Feature Chips */}
 
-        <div className="flex flex-wrap gap-3 mb-10">
+                    <div className="flex flex-wrap gap-3 mb-10">
 
-          {domain.features.map((feature, i) => (
+                      {domain.features.map((feature, i) => (
 
-            <motion.span
-              key={i}
-              whileHover={{
-                scale: 1.05,
-                y: -2,
-              }}
-              className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm"
-            >
-              {feature}
-            </motion.span>
+                        <motion.span
+                          key={i}
+                          whileHover={{
+                            scale: 1.05,
+                            y: -2,
+                          }}
+                          className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm"
+                        >
+                          {feature}
+                        </motion.span>
 
-          ))}
+                      ))}
 
-        </div>
+                    </div>
 
-        {/* Button */}
+                    {/* Button */}
 
-        <motion.button
-          whileHover={{
-            x: 6,
-            scale: 1.03,
-          }}
-          whileTap={{scale: 0.98}}
-          transition={{ type: "spring", stiffness: 300 }}
-          className="group inline-flex items-center gap-3 font-semibold text-indigo-600 text-lg"
-        >
+                    <motion.button
+                      whileHover={{
+                        x: 6,
+                        scale: 1.03,
+                      }}
+                      whileTap={{scale: 0.98}}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="group inline-flex items-center gap-3 font-semibold text-indigo-600 text-lg"
+                    >
 
-          Explore Research
+                      Explore Research
 
-          <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                      <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
 
-        </motion.button>
+                    </motion.button>
 
-      </div>
+                  </div>
 
-    </motion.div>
+                </motion.div>
 
-  );
+              );
 
-})}
+            })}
 
         </div>
 

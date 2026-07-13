@@ -101,7 +101,7 @@ export default function ResearchPhilosophy() {
 
         {/* Two Columns */}
 
-        <div className="mt-24 grid lg:grid-cols-2 gap-20 items-center">
+        <div className="mt-24 grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
         
         {/* Left Illustration */}
 
@@ -113,7 +113,7 @@ export default function ResearchPhilosophy() {
           className="relative flex items-center justify-center"
         >
 
-          <div className="relative flex h-[460px] w-[460px] items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 via-white to-cyan-100 shadow-2xl">
+          <div className="relative flex h-[420px] w-[420px] lg:h-[480px] lg:w-[480px] items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 via-white to-cyan-100 shadow-2xl">
 
             <motion.div
               animate={{ rotate: 360 }}
@@ -122,7 +122,7 @@ export default function ResearchPhilosophy() {
                 repeat: Infinity,
                 ease: "linear",
               }}
-              className="absolute h-[420px] w-[420px] rounded-full border border-indigo-200"
+              className="absolute h-[380px] w-[380px] lg:h-[420px] lg:w-[420px] rounded-full border border-indigo-200"
             />
 
             <motion.div
@@ -132,7 +132,7 @@ export default function ResearchPhilosophy() {
                 repeat: Infinity,
                 ease: "linear",
               }}
-              className="absolute h-[300px] w-[300px] rounded-full border border-cyan-300"
+              className="absolute h-[280px] w-[280px] lg:h-[320px] lg:w-[320px] rounded-full border border-cyan-300"
             />
 
             <motion.div
@@ -164,7 +164,7 @@ export default function ResearchPhilosophy() {
 
         {/* Right Content */}
 
-        <div className="space-y-8">
+        <div className="space-y-6">
 
           {philosophy.map((item, index) => {
 
@@ -192,7 +192,7 @@ export default function ResearchPhilosophy() {
                   scale: 1.02,
                   boxShadow: "0 30px 60px rgba(99,102,241,0.18)",
                 }}
-                className="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-lg">
+                className="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-10 shadow-lg">
 
                 {/* Gradient Top */}
 

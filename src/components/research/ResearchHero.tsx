@@ -22,7 +22,7 @@ export default function ResearchHero() {
       <div className="absolute -top-20 -left-20 h-96 w-96 rounded-full bg-violet-500/10 blur-[120px]" />
       <div className="absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-[140px]" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
+      <div className="relative mx-auto grid max-w-[1600px] items-center gap-10 px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-20 lg:grid-cols-2">
 
         {/* Left Content */}
 
@@ -109,10 +109,25 @@ export default function ResearchHero() {
             },
         }}
 
-        className="relative flex items-center justify-center"
+        className="relative flex items-center justify-center mt-12 lg:mt-0"
         >
 
-          <div className="relative flex h-[500px] w-[500px] items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 to-cyan-100 shadow-2xl">
+          <div className="
+          relative
+          flex
+          items-center
+          justify-center
+          w-[260px] h-[260px]
+          sm:w-[360px] sm:h-[360px]
+          md:w-[450px] md:h-[450px]
+          lg:w-[500px] lg:h-[500px]
+          xl:w-[560px] xl:h-[560px]
+          rounded-full
+          bg-gradient-to-br
+          from-indigo-100
+          to-cyan-100
+          shadow-2xl
+          ">
 
             <motion.div 
                 animate={{ rotate: 360 }}
@@ -121,7 +136,11 @@ export default function ResearchHero() {
                     repeat: Infinity,
                     ease: "linear",
                 }}
-                className="absolute h-[380px] w-[380px] rounded-full border border-indigo-200 "
+                className="absolute h-[190px] w-[190px]
+                sm:h-[270px] sm:w-[270px]
+                md:h-[340px] md:w-[340px]
+                lg:h-[380px] lg:w-[380px]
+                xl:h-[430px] xl:w-[430px] rounded-full border border-indigo-200 "
              />
 
             <motion.div 
@@ -131,7 +150,11 @@ export default function ResearchHero() {
                     repeat: Infinity,
                     ease: "linear",
                 }}
-                className="absolute h-[280px] w-[280px] rounded-full border border-cyan-300" 
+                className="absolute h-[140px] w-[140px]
+                sm:h-[200px] sm:w-[200px]
+                md:h-[250px] md:w-[250px]
+                lg:h-[280px] lg:w-[280px]
+                xl:h-[330px] xl:w-[330px] rounded-full border border-cyan-300" 
             />
 
             <motion.div
@@ -144,7 +167,7 @@ export default function ResearchHero() {
                     ease: "easeInOut",
                 }}
                 >
-                <Microscope className="h-32 w-32 text-indigo-600" />
+                <Microscope className="h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 lg:h-32 lg:w-32 text-indigo-600" />
             </motion.div>
           </div>
 
