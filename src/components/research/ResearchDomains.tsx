@@ -2,129 +2,125 @@
 
 import { motion } from "framer-motion";
 import {
-  Brain,
+  BrainCircuit,
   HeartPulse,
-  Bot,
   ShieldCheck,
-  Fish,
-  Cpu,
+  Utensils,
+  Bot,
+  Lightbulb,
   ArrowRight,
 } from "lucide-react";
 
-{/*Research Domain Data*/}
-
 const domains = [
   {
-    icon: Brain,
+    number: "01",
     title: "Artificial Intelligence & Intelligent Systems",
     description:
-      "Developing intelligent software and AI-driven technologies that enable automation, computer vision, predictive analytics, and decision-making across multiple industries.",
+      "Developing intelligent software and AI-driven technologies for computer vision, behaviour understanding, predictive systems, and intelligent decision-making.",
+    icon: BrainCircuit,
     features: [
       "Computer Vision",
       "Machine Learning",
       "Behaviour Analysis",
       "Edge AI",
-      "Predictive Systems",
     ],
-    color: "from-violet-600 to-purple-600",
-    bg: "bg-violet-50",
+    accent: "from-violet-600 to-indigo-500",
+    glow: "bg-violet-100",
     iconColor: "text-violet-600",
   },
 
   {
-    icon: HeartPulse,
+    number: "02",
     title: "Healthcare Engineering",
     description:
-      "Designing assistive medical technologies, rehabilitation systems, patient monitoring devices, and intelligent healthcare solutions for improving quality of life.",
+      "Designing assistive and intelligent technologies that support healthcare, rehabilitation, accessibility, and improved quality of life.",
+    icon: HeartPulse,
     features: [
-      "Medical Devices",
       "Assistive Technology",
-      "Patient Monitoring",
-      "Healthcare AI",
       "Rehabilitation",
+      "Health Monitoring",
+      "Smart Devices",
     ],
-    color: "from-cyan-500 to-blue-600",
-    bg: "bg-cyan-50",
+    accent: "from-cyan-500 to-blue-500",
+    glow: "bg-cyan-100",
     iconColor: "text-cyan-600",
   },
 
   {
-    icon: Bot,
-    title: "Automation & Robotics",
+    number: "03",
+    title: "Women's Safety & Protective Systems",
     description:
-      "Creating intelligent automation systems, robotics platforms, industrial IoT solutions, and smart engineering processes for modern industries.",
-    features: [
-      "Industrial Automation",
-      "Robotics",
-      "IoT",
-      "Smart Manufacturing",
-      "Embedded Systems",
-    ],
-    color: "from-indigo-600 to-blue-600",
-    bg: "bg-indigo-50",
-    iconColor: "text-indigo-600",
-  },
-
-  {
+      "Researching intelligent preventive, protective, and emergency-response technologies designed to improve personal safety.",
     icon: ShieldCheck,
-    title: "Women's Safety Technologies",
-    description:
-      "Researching innovative personal safety technologies using AI, smart wearables, emergency communication, and behaviour analysis for social protection.",
     features: [
-      "AI Monitoring",
-      "Wearable Devices",
-      "Emergency Systems",
-      "Behaviour Detection",
-      "Smart Protection",
+      "Risk Detection",
+      "Protective Systems",
+      "Emergency Response",
+      "Smart Wearables",
     ],
-    color: "from-pink-500 to-rose-600",
-    bg: "bg-pink-50",
-    iconColor: "text-pink-600",
+    accent: "from-fuchsia-500 to-violet-600",
+    glow: "bg-fuchsia-100",
+    iconColor: "text-fuchsia-600",
   },
 
   {
-    icon: Fish,
-    title: "Food Technology & Sustainable Processing",
+    number: "04",
+    title: "Food Technology & Processing",
     description:
-      "Developing ethical food processing systems, humane engineering technologies, automation equipment, and sustainable manufacturing solutions.",
+      "Developing engineering solutions for safer, more humane, hygienic, and automated food-processing systems.",
+    icon: Utensils,
     features: [
+      "Process Automation",
       "Humane Processing",
-      "Food Safety",
-      "Automation",
-      "Sustainable Engineering",
-      "Smart Processing",
+      "Hygiene Systems",
+      "Quality Monitoring",
     ],
-    color: "from-emerald-500 to-green-600",
-    bg: "bg-green-50",
-    iconColor: "text-green-600",
+    accent: "from-emerald-500 to-cyan-500",
+    glow: "bg-emerald-100",
+    iconColor: "text-emerald-600",
   },
 
   {
-    icon: Cpu,
-    title: "Applied Engineering Research",
+    number: "05",
+    title: "Automation & Intelligent Machines",
     description:
-      "Transforming innovative concepts into practical engineering solutions through rapid prototyping, validation, testing, and multidisciplinary collaboration.",
+      "Combining sensing, embedded intelligence, automation, and mechanical engineering to develop efficient intelligent machines.",
+    icon: Bot,
     features: [
-      "Rapid Prototyping",
-      "Simulation",
-      "Product Design",
-      "Testing",
-      "Technology Transfer",
+      "Automation",
+      "Sensors",
+      "Embedded Systems",
+      "Intelligent Machines",
     ],
-    color: "from-orange-500 to-red-500",
-    bg: "bg-orange-50",
-    iconColor: "text-orange-600",
+    accent: "from-blue-500 to-indigo-600",
+    glow: "bg-blue-100",
+    iconColor: "text-blue-600",
+  },
+
+  {
+    number: "06",
+    title: "Applied Engineering & Innovation",
+    description:
+      "Transforming multidisciplinary research concepts into practical prototypes and engineering solutions for real-world challenges.",
+    icon: Lightbulb,
+    features: [
+      "Prototyping",
+      "Product Development",
+      "System Integration",
+      "Applied Research",
+    ],
+    accent: "from-amber-400 to-orange-500",
+    glow: "bg-amber-100",
+    iconColor: "text-amber-600",
   },
 ];
-
 export default function ResearchDomains() {
   return (
-    <section className="relative py-28 bg-white overflow-hidden">
+    <section className="relative overflow-hidden bg-white pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-28 lg:pb-24">
 
-      {/* Background Grid */}
-
+      {/* Background grid */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
           backgroundImage:
             "radial-gradient(#6366f1 1px, transparent 1px)",
@@ -132,28 +128,22 @@ export default function ResearchDomains() {
         }}
       />
 
-      {/* Gradient Blobs */}
+      {/* Main container */}
+      <div className="relative mx-auto w-full max-w-[1600px] px-5 sm:px-8 lg:px-10 xl:px-16">
 
-      <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-violet-500/10 blur-[120px]" />
-      <div className="absolute bottom-0 -right-24 h-[420px] w-[420px] rounded-full bg-cyan-500/10 blur-[140px]" />
-
-      <div className="relative max-w-screen-2xl mx-auto px-8 xl:px-12">
-
-        {/* Heading */}
-
+        {/* Section heading */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: .7 }}
-          className="text-center mb-24"
+          transition={{ duration: 0.6 }}
+          className="mx-auto mb-10 max-w-4xl text-center sm:mb-14 lg:mb-20"
         >
-
-          <p className="text-indigo-600 uppercase tracking-[0.3em] text-sm font-semibold mb-4">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600 sm:text-sm">
             Research Domains
           </p>
 
-          <h2 className="text-5xl font-bold leading-tight text-slate-900">
+          <h2 className="text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Engineering Solutions
             <br />
             <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
@@ -161,150 +151,253 @@ export default function ResearchDomains() {
             </span>
           </h2>
 
-          <p className="max-w-3xl mx-auto mt-8 text-xl text-slate-600 leading-9">
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
             Our multidisciplinary research spans Artificial Intelligence,
-            Healthcare, Automation, Food Technology, Women's Safety,
-            and Applied Engineering to develop impactful technologies.
+            Healthcare, Automation, Food Technology, Women&apos;s Safety, and
+            Applied Engineering to develop impactful technologies.
           </p>
-
         </motion.div>
+        {/* Research Domain 01 */}
+        
 
-        {/* Domains */}
+            {/* ================= DOMAIN 01 CARD ================= */}
 
-        <div className="space-y-28">
-            {domains.map((domain, index) => {
+            <div className="space-y-10 lg:space-y-14">
+              {domains.map((domain, index) => {
+                const Icon = domain.icon;
+                const reverse = index % 2 !== 0;
 
-              const Icon = domain.icon;
-              const left = index % 2 === 0;
+            return (
 
-              return (
+            <motion.div
+              key={domain.number}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="
+                mx-auto w-full
+                rounded-[28px]
+                border border-slate-200/70
+                bg-white/90
+                px-4 py-8
+                shadow-[0_20px_60px_rgba(15,23,42,0.07)]
+                sm:px-8 sm:py-10
+                lg:px-12 lg:py-10
+                xl:px-14 xl:py-10
+              "
+            >
+              <div
+                className="
+                  grid grid-cols-1 items-center gap-8
+                  lg:grid-cols-2 lg:gap-14
+                "
+              >
+
+                {/* ================= LEFT : CIRCLE ================= */}
 
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 60 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.8,
-                    delay: index * 0.1,
-                  }}
-                  className={`grid lg:grid-cols-[0.9fr_1.1fr] gap-10 xl:gap-16 items-center ${
-                    left ? "" : "lg:[&>*:first-child]:order-2"
-                  }`}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.4 }}
+                  className="flex items-center justify-center"
                 >
-
-                  {/* Illustration Side */}
-
-                  <motion.div
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.4 }}
-                    className="relative flex justify-center items-center -translate-y-6 lg:translate-x-6"
+                  <div
+                    className={`
+                      relative
+                      flex items-center justify-center
+                      h-[200px] w-[200px]
+                      sm:h-[260px] sm:w-[260px]
+                      md:h-[320px] md:w-[320px]
+                      lg:h-[360px] lg:w-[360px]
+                      xl:h-[380px] xl:w-[380px]
+                      rounded-full
+                      bg-gradient-to-br
+                      ${domain.accent}
+                      p-[2px]
+                      shadow-[0_25px_60px_rgba(99,102,241,0.12)]
+                    `}
                   >
 
-                    <div className={`relative h-[380px] w-[380px] xl:h-[440px] xl:w-[440px] rounded-full bg-gradient-to-br ${domain.color} p-[2px] shadow-[0_0_80px_rgba(99,102,241,0.15)]`}>
-                        <motion.div
+                    {/* White inner circle */}
+
+                    <div
+                      className="
+                        relative
+                        flex h-full w-full
+                        items-center justify-center
+                        rounded-full
+                        bg-white
+                      "
+                    >
+
+                      {/* Decorative outer ring */}
+
+                      <motion.div
                         animate={{ rotate: 360 }}
                         transition={{
-                            duration: 40,
-                            repeat: Infinity,
-                            ease: "linear",
+                          duration: 40,
+                          repeat: Infinity,
+                          ease: "linear",
                         }}
-                        className="absolute h-[410px] w-[410px] rounded-full border border-indigo-200/40"
-                        />
+                        className="
+                          absolute
+                          h-[90%] w-[90%]
+                          rounded-full
+                          border border-indigo-200/50
+                        "
+                      />
 
-                        <motion.div
+                      {/* Decorative inner ring */}
+
+                      <motion.div
                         animate={{ rotate: -360 }}
                         transition={{
-                            duration: 28,
-                            repeat: Infinity,
-                            ease: "linear",
+                          duration: 28,
+                          repeat: Infinity,
+                          ease: "linear",
                         }}
-                        className="absolute h-[320px] w-[320px] rounded-full border border-cyan-200/50"
-                        />
+                        className="
+                          absolute
+                          h-[72%] w-[72%]
+                          rounded-full
+                          border border-cyan-200/60
+                        "
+                      />
 
-                      <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
+                      {/* Icon background */}
 
-                        <div className={`flex h-28 w-28 items-center justify-center rounded-full ${domain.bg}`}>
+                      <div
+                        className={`
+                          relative z-10
+                          flex h-20 w-20
+                          items-center justify-center
+                          rounded-full
+                          ${domain.glow}
+                          sm:h-24 sm:w-24
+                        `}
+                      >
+                        {(() => {
+                          const Icon = domain.icon;
 
-                          <Icon className={`h-14 w-14 ${domain.iconColor}`} />
-
-                        </div>
-
+                          return (
+                            <Icon
+                              className={`
+                                h-10 w-10
+                                ${domain.iconColor}
+                                sm:h-12 sm:w-12
+                              `}
+                            />
+                          );
+                        })()}
                       </div>
 
                     </div>
+                  </div>
+                </motion.div>
 
-                  </motion.div>
 
-                  {/* Content Side */}
+                {/* ================= RIGHT : CONTENT ================= */}
 
-                  <div className="max-w-2xl">
+                <div className="w-full">
 
-                    <div className="inline-flex items-center rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 mb-6">
-                      Research Domain {String(index + 1).padStart(2, "0")}
-                    </div>
+                  {/* Domain number */}
 
-                    <h3 className="text-4xl xl:text-5xl font-bold text-slate-900 mb-6">
-                      {domain.title}
-                    </h3>
+                  <div
+                    className="
+                      mb-5 inline-flex
+                      rounded-full
+                      bg-slate-100
+                      px-4 py-2
+                      text-xs font-semibold
+                      text-slate-700
+                      sm:text-sm
+                    "
+                  >
+                    Research Domain {domain.number}
+                  </div>
 
-                    <div className={`w-24 h-1 rounded-full bg-gradient-to-r ${domain.color} mb-8`} />
 
-                    <p className="text-xl leading-9 text-slate-600 mb-8">
-                      {domain.description}
-                    </p>
+                  {/* Title */}
 
-                            {/* Feature Chips */}
+                  <h3 className="
+                    text-[27px] leading-[1.18] font-bold text-slate-900
+                    sm:text-4xl
+                    lg:text-5xl
+                  ">
+                    {domain.title}
+                  </h3>
 
-                    <div className="flex flex-wrap gap-3 mb-10">
 
-                      {domain.features.map((feature, i) => (
+                  {/* Accent line */}
 
-                        <motion.span
-                          key={i}
-                          whileHover={{
-                            scale: 1.05,
-                            y: -2,
-                          }}
-                          className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm"
-                        >
-                          {feature}
-                        </motion.span>
+                  <div
+                    className={`
+                      my-6
+                      h-1 w-20
+                      rounded-full
+                      bg-gradient-to-r
+                      ${domain.accent}
+                    `}
+                  />
 
-                      ))}
 
-                    </div>
+                  {/* Description */}
 
-                    {/* Button */}
+                  <p
+                    className="
+                      max-w-2xl
+                      text-base
+                      leading-7
+                      text-slate-600
+                      sm:text-lg
+                      sm:leading-8
+                    "
+                  >
+                    {domain.description}
+                  </p>
 
-                    <motion.button
-                      whileHover={{
-                        x: 6,
-                        scale: 1.03,
-                      }}
-                      whileTap={{scale: 0.98}}
-                      transition={{ type: "spring", stiffness: 300 }}
-                      className="group inline-flex items-center gap-3 font-semibold text-indigo-600 text-lg"
-                    >
 
-                      Explore Research
+                  {/* Feature chips */}
 
-                      <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
 
-                    </motion.button>
+                    {domain.features.map((feature) => (
+
+                      <motion.span
+                        key={feature}
+                        whileHover={{
+                          y: -2,
+                          scale: 1.03,
+                        }}
+                        className="
+                          rounded-full
+                          border border-slate-200
+                          bg-slate-50
+                          px-3 py-2
+                          text-xs
+                          font-medium
+                          text-slate-700
+                          shadow-sm
+                          sm:px-4
+                          sm:text-sm
+                        "
+                      >
+                        {feature}
+                      </motion.span>
+
+                    ))}
 
                   </div>
 
-                </motion.div>
+                </div>
 
-              );
-
-            })}
-
+              </div>
+            </motion.div>
+        
+            );
+              })}
         </div>
-
       </div>
-
     </section>
   );
 }
