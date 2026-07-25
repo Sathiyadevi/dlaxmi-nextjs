@@ -14,52 +14,50 @@ const process = [
     icon: Search,
     title: "Problem Discovery",
     description:
-      "We identify real-world engineering challenges through research, observation, and industry collaboration.",
+      "We identify real-world challenges through research, observation, stakeholder needs, and practical problem analysis.",
     color: "from-violet-600 to-fuchsia-600",
   },
 
   {
     number: "02",
     icon: Lightbulb,
-    title: "Concept Development",
+    title: "Research & Concept",
     description:
-      "Innovative ideas are transformed into practical concepts using scientific thinking and multidisciplinary engineering.",
+      "We investigate existing approaches and transform promising ideas into practical engineering concepts.",
     color: "from-cyan-500 to-blue-600",
   },
 
   {
     number: "03",
-    icon: FlaskConical,
-    title: "Research & Validation",
+    icon: Cpu,
+    title: "Engineering Design",
     description:
-      "Every concept is validated through simulation, experimentation, prototyping, and technical evaluation.",
+      "AI, automation, embedded systems, mechanical engineering, and software are integrated into system designs.",
     color: "from-green-500 to-emerald-600",
   },
 
   {
     number: "04",
-    icon: Cpu,
-    title: "Engineering Design",
+    icon: FlaskConical,
+    title: "Prototype & Validation",
     description:
-      "AI, Automation, IoT, Embedded Systems, and Software Engineering are integrated into scalable solutions.",
+      "Concepts are developed into prototypes and evaluated through experimentation, testing, and technical validation.",
     color: "from-orange-500 to-red-500",
   },
 
   {
     number: "05",
     icon: Rocket,
-    title: "Innovation Impact",
+    title: "Innovation & Deployment",
     description:
-      "Solutions are refined for commercialization, societal impact, and long-term sustainable deployment.",
+      "Validated technologies are refined toward scalable implementation, collaboration, commercialization, and societal impact.",
     color: "from-indigo-600 to-violet-600",
   },
 ];
-
 export default function ResearchProcessy() {
     return(
-        <section className="relative py-28 bg-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6">
-
+        <section className="relative py-16 sm:py-20 lg:py-28 bg-white overflow-hidden">
+            <div className="max-w-7xl mx-auto px-5 sm:px-6">
             {/* Heading */}
 
                 <motion.div
@@ -67,15 +65,14 @@ export default function ResearchProcessy() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-24"
+                    className="text-center mb-10 sm:mb-16 lg:mb-24"
                 >
 
                     <p className="text-sm font-semibold tracking-[0.35em] uppercase text-violet-600 mb-4">
                     Research Process
                     </p>
 
-                    <h2 className="text-5xl font-bold text-slate-900 leading-tight">
-
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
                     From
                     <span className="bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
                         {" "}Problem{" "}
@@ -89,17 +86,73 @@ export default function ResearchProcessy() {
 
                     </h2>
 
-                    <p className="mt-8 max-w-3xl mx-auto text-lg leading-9 text-slate-600">
+                    <p className="mt-6 lg:mt-8 max-w-3xl mx-auto text-base sm:text-lg leading-7 sm:leading-8 lg:leading-9 text-slate-600">
                     Every innovation at DLAXMI INFOTECH LLP follows a structured engineering
                     workflow—from identifying real-world problems to developing validated,
                     scalable technologies that create meaningful impact.
                     </p>
 
                 </motion.div>
+                {/* Mobile Research Process */}
+                    <div className="lg:hidden space-y-4">
+                    {process.map((step, index) => {
+                        const Icon = step.icon;
+
+                        return (
+                        <motion.div
+                            key={step.number}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                            duration: 0.5,
+                            delay: index * 0.08,
+                            }}
+                            className="relative flex gap-4"
+                        >
+                            {/* Left timeline */}
+                            <div className="flex flex-col items-center">
+                            <div
+                                className={`relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-r ${step.color} p-[2px]`}
+                            >
+                                <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
+                                <Icon className="h-5 w-5 text-violet-600" />
+                                </div>
+                            </div>
+
+                            {index !== process.length - 1 && (
+                                <div className="my-1 w-[2px] flex-1 bg-slate-200" />
+                            )}
+                            </div>
+
+                            {/* Content */}
+                            <div className="pb-6 flex-1">
+                            <span className="inline-block rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
+                                Step {step.number}
+                            </span>
+
+                            <h3 className="mt-3 text-xl font-bold leading-tight text-slate-900">
+                                {step.title}
+                            </h3>
+
+                            <div
+                                className={`my-3 h-[2px] w-10 bg-gradient-to-r ${step.color}`}
+                            />
+
+                            <p className="text-sm leading-6 text-slate-600">
+                                {step.description}
+                            </p>
+                            </div>
+                        </motion.div>
+                        );
+                    })}
+                    </div>
+
+
 
                  {/* Timeline */}
 
-                <div className="relative">
+                <div className="relative hidden lg:block">
 
                     {/* Timeline Line */}
 
