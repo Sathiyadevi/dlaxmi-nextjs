@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -9,6 +10,33 @@ import {
 } from "lucide-react";
 
 export default function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  const handleSubmit = async (
+  event: React.FormEvent<HTMLFormElement>
+  ) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+
+    setIsSubmitting(true);
+    setStatus("idle");
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      setStatus("success");
+      form.reset();
+    } catch (error) {
+      console.error("Contact form error:", error);
+      setStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <section
       id="contact-form"
@@ -121,7 +149,7 @@ export default function ContactSection() {
             transition={{ duration: 0.6 }}
             className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm sm:p-9"
           >
-            <form className="space-y-6">
+            <form  onSubmit={handleSubmit}  className="space-y-6">
 
               {/* Name + Email */}
               <div className="grid gap-5 sm:grid-cols-2">
@@ -132,6 +160,8 @@ export default function ContactSection() {
 
                   <input
                     type="text"
+                    name="name"
+                    required
                     placeholder="Your name"
                     className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
                   />
@@ -144,6 +174,8 @@ export default function ContactSection() {
 
                   <input
                     type="email"
+                    name="email"
+                    required
                     placeholder="you@example.com"
                     className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
                   />
@@ -168,9 +200,10 @@ export default function ContactSection() {
                 <label className="text-sm font-semibold text-slate-700">
                   Enquiry Type
                 </label>
-
+                
                 <select
                   defaultValue=""
+                  required
                   className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600 outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
                 >
                   <option value="" disabled>
@@ -193,6 +226,7 @@ export default function ContactSection() {
 
                 <textarea
                   rows={6}
+                  required
                   placeholder="Tell us about your enquiry or idea..."
                   className="mt-2 w-full resize-none rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
                 />
@@ -200,11 +234,30 @@ export default function ContactSection() {
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:shadow-lg sm:w-auto"
               >
-                Send Enquiry
-                <Send className="h-4 w-4" />
+                {isSubmitting ? "Sending..." : "Send Enquiry"}
+                {!isSubmitting && <Send className="h-4 w-4" />}
+                
               </button>
+              {status === "success" && (
+                <p
+                  role="status"
+                  className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700"
+                >
+                  Thank you. Your enquiry has been submitted successfully.
+                </p>
+              )}
+
+              {status === "error" && (
+                <p
+                  role="alert"
+                  className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
+                >
+                  We couldn&apos;t send your enquiry. Please try again.
+                </p>
+              )}
 
             </form>
           </motion.div>
