@@ -108,15 +108,15 @@ export default function ResearchProcessy() {
                             duration: 0.5,
                             delay: index * 0.08,
                             }}
-                            className="relative flex gap-4"
+                            className="relative flex gap-4 pl-3"
                         >
                             {/* Left timeline */}
                             <div className="flex flex-col items-center">
                             <div
-                                className={`relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-r ${step.color} p-[2px]`}
+                                className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-r ${step.color} p-[2px]`}
                             >
                                 <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
-                                <Icon className="h-5 w-5 text-violet-600" />
+                                <Icon className="h-4.5 w-4.5 text-violet-600" />
                                 </div>
                             </div>
 
