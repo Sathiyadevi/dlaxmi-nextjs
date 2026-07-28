@@ -12,7 +12,7 @@ export default function CollaborateHero() {
         <div className="absolute right-[-10%] top-40 h-80 w-80 rounded-full bg-cyan-200/40 blur-3xl" />
       </div>
 
-      <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-14 px-6 py-24 lg:grid-cols-2 lg:px-8">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:px-6 sm:py-16 lg:min-h-[720px] lg:grid-cols-2 lg:gap-14 lg:px-8 lg:py-24">
         {/* Left */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -23,20 +23,20 @@ export default function CollaborateHero() {
             Collaborate With Us
           </p>
 
-          <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:mt-5 sm:text-5xl lg:text-6xl">
             Innovation Grows
             <span className="block bg-gradient-to-r from-violet-600 via-cyan-500 to-fuchsia-600 bg-clip-text text-transparent">
               Through Collaboration
             </span>
           </h1>
 
-          <p className="mt-7 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
+          <p className="mt-5 max-w-xl text-base leading-7 text-slate-600 sm:mt-7 sm:text-lg sm:leading-8">
             We collaborate with researchers, academic institutions, industry
             partners, technical experts, and organizations to transform
             meaningful challenges into practical technology solutions.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row">
             <a
               href="#collaboration-areas"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-violet-700"
@@ -59,7 +59,7 @@ export default function CollaborateHero() {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="relative mx-auto flex h-[420px] w-full max-w-lg items-center justify-center"
+          className="relative mx-auto flex h-[420px] w-full max-w-lg items-center justify-center sm:h-[380px] lg:h-[420px]"
         >
           <div className="absolute h-72 w-72 rounded-full border border-dashed border-violet-200" />
 
@@ -85,7 +85,7 @@ export default function CollaborateHero() {
           </div>
 
           {/* Partnership */}
-          <div className="absolute right-4 top-20 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg">
+          <div className="absolute right-4 top-14 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg">
             <Users className="h-6 w-6 text-cyan-600" />
             <p className="mt-2 text-sm font-semibold text-slate-800">
               Partnership

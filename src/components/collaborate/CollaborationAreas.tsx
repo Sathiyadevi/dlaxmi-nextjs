@@ -39,7 +39,7 @@ export default function CollaborationAreas() {
   return (
     <section
       id="collaboration-areas"
-      className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
@@ -84,7 +84,7 @@ export default function CollaborationAreas() {
                   duration: 0.5,
                   delay: index * 0.08,
                 }}
-                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8"
+                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-7"
               >
                 {/* Number */}
                 <span className="absolute right-6 top-5 text-5xl font-bold text-slate-100">

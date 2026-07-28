@@ -46,7 +46,7 @@ const partners = [
 
 export default function WhoWeCollaborate() {
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-20 sm:py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-slate-50 py-16 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Heading */}
@@ -76,7 +76,7 @@ export default function WhoWeCollaborate() {
         </motion.div>
 
         {/* Partner Grid */}
-        <div className="mx-auto mt-14 grid max-w-6xl gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-6xl gap-4 sm:grid-cols-2 sm:mt-14 lg:mt-16 lg:grid-cols-3">
           {partners.map((partner, index) => {
             const Icon = partner.icon;
 

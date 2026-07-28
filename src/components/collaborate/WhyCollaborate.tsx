@@ -33,7 +33,7 @@ const reasons = [
 
 export default function WhyCollaborate() {
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-20 sm:py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-slate-50 py-16 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Heading */}
@@ -76,7 +76,7 @@ export default function WhyCollaborate() {
                   duration: 0.5,
                   delay: index * 0.08,
                 }}
-                className="group rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="group rounded-3xl border border-slate-200 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-50 transition group-hover:bg-violet-100">
                   <Icon className="h-6 w-6 text-violet-600" />

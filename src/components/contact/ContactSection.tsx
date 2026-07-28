@@ -16,17 +16,34 @@ export default function ContactSection() {
   >("idle");
 
   const handleSubmit = async (
-  event: React.FormEvent<HTMLFormElement>
+    event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
 
     const form = event.currentTarget;
+    const formData = new FormData(form);
 
     setIsSubmitting(true);
     setStatus("idle");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          organization: formData.get("organization"),
+          enquiryType: formData.get("enquiryType"),
+          message: formData.get("message"),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to send enquiry");
+      }
 
       setStatus("success");
       form.reset();
@@ -190,6 +207,7 @@ export default function ContactSection() {
 
                 <input
                   type="text"
+                  name="organization"
                   placeholder="University, company, organization, etc."
                   className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
                 />
@@ -202,6 +220,7 @@ export default function ContactSection() {
                 </label>
                 
                 <select
+                  name="enquiryType"
                   defaultValue=""
                   required
                   className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600 outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
@@ -226,6 +245,7 @@ export default function ContactSection() {
 
                 <textarea
                   rows={6}
+                  name="message"
                   required
                   placeholder="Tell us about your enquiry or idea..."
                   className="mt-2 w-full resize-none rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"

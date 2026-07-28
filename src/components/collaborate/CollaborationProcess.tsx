@@ -38,7 +38,7 @@ const steps = [
 
 export default function CollaborationProcess() {
   return (
-    <section className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Heading */}
@@ -67,12 +67,15 @@ export default function CollaborationProcess() {
         </motion.div>
 
         {/* Process */}
-        <div className="relative mx-auto mt-16 max-w-6xl">
+        <div className="relative mx-auto mt-12 max-w-6xl sm:mt-14 lg:mt-16">
+
+          {/* Mobile / Tablet vertical connecting line */}
+          <div className="absolute bottom-10 left-10 top-10 w-px bg-gradient-to-b from-violet-300 via-cyan-300 to-fuchsia-300 lg:hidden" />
 
           {/* Desktop connecting line */}
           <div className="absolute left-[12%] right-[12%] top-10 hidden h-px bg-gradient-to-r from-violet-300 via-cyan-300 to-fuchsia-300 lg:block" />
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {steps.map((step, index) => {
               const Icon = step.icon;
 
@@ -86,15 +89,15 @@ export default function CollaborationProcess() {
                     duration: 0.5,
                     delay: index * 0.1,
                   }}
-                  className="relative text-center"
+                  className="relative pl-24 text-left lg:pl-0 lg:text-center"
                 >
                   {/* Icon */}
-                  <div className="relative z-10 mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-violet-200 bg-white shadow-lg">
+                  <div className="absolute left-0 top-0 z-10 flex h-20 w-20 items-center justify-center rounded-full border border-violet-200 bg-white shadow-lg lg:relative lg:mx-auto">
                     <Icon className="h-7 w-7 text-violet-600" />
                   </div>
 
                   {/* Step */}
-                  <span className="mt-5 inline-block rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500">
+                  <span className="inline-block rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500 lg:mt-5">
                     Step {step.number}
                   </span>
 
@@ -102,7 +105,7 @@ export default function CollaborationProcess() {
                     {step.title}
                   </h3>
 
-                  <p className="mx-auto mt-3 max-w-[250px] text-sm leading-6 text-slate-600">
+                  <p className="mt-3 max-w-[250px] text-sm leading-6 text-slate-600 lg:mx-auto">
                     {step.text}
                   </p>
 
