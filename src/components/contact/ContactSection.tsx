@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -9,13 +9,207 @@ import {
   Send,
 } from "lucide-react";
 
+type FormValues = {
+  name: string;
+  email: string;
+  organization: string;
+  enquiryType: string;
+  message: string;
+};
+
+type FormErrors = {
+  name: string;
+  email: string;
+  enquiryType: string;
+  message: string;
+};
+
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [status, setStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  const [formValues, setFormValues] = useState<FormValues>({
+    name: "",
+    email: "",
+    organization: "",
+    enquiryType: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState<FormErrors>({
+    name: "",
+    email: "",
+    enquiryType: "",
+    message: "",
+  });
+
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    enquiryType: false,
+    message: false,
+  });
+
+  const blockedDomains = [
+  "mailinator.com",
+  "10minutemail.com",
+  "guerrillamail.com",
+  "tempmail.com",
+];
+
+const validateName = (value: string) => {
+  if (!value.trim()) return "Name is required.";
+
+  if (value.trim().length < 2)
+    return "Name must contain at least 2 characters.";
+
+  return "";
+};
+
+const validateEmail = (value: string) => {
+  if (!value.trim())
+    return "Email address is required.";
+
+  const email =
+    value.trim().toLowerCase();
+
+  const emailPattern =
+    /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+  if (!emailPattern.test(email))
+    return "Please enter a valid email address.";
+
+  const domain =
+    email.split("@")[1];
+
+  if (
+    blockedDomains.includes(domain)
+  ) {
+    return "Temporary email addresses are not allowed.";
+  }
+
+  return "";
+};
+
+const validateEnquiryType = (
+  value: string
+) => {
+  if (!value)
+    return "Please select an enquiry type.";
+
+  return "";
+};
+
+const validateMessage = (
+  value: string
+) => {
+  if (!value.trim())
+    return "Message is required.";
+
+  if (value.trim().length < 20)
+    return "Please enter at least 20 characters.";
+
+  if (value.length > 500)
+    return "Maximum 500 characters allowed.";
+
+  return "";
+};
+
+const validateField = (
+  name: keyof FormValues,
+  value: string
+) => {
+  switch (name) {
+    case "name":
+      return validateName(value);
+
+    case "email":
+      return validateEmail(value);
+
+    case "enquiryType":
+      return validateEnquiryType(value);
+
+    case "message":
+      return validateMessage(value);
+
+    default:
+      return "";
+  }
+};
+
+const handleChange = (
+  e: ChangeEvent<
+    HTMLInputElement |
+    HTMLTextAreaElement |
+    HTMLSelectElement
+  >
+) => {
+  const { name, value } = e.target;
+
+  setFormValues((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+
+  if (
+    name === "name" ||
+    name === "email" ||
+    name === "enquiryType" ||
+    name === "message"
+  ) {
+    setErrors((prev) => ({
+      ...prev,
+      [name]: validateField(
+        name as keyof FormValues,
+        value
+      ),
+    }));
+  }
+
+  setErrorMessage("");
+};
+
+const handleBlur = (
+  e: ChangeEvent<
+    HTMLInputElement |
+    HTMLTextAreaElement |
+    HTMLSelectElement
+  >
+) => {
+  const { name } = e.target;
+
+  setTouched((prev) => ({
+    ...prev,
+    [name]: true,
+  }));
+};
+
+const isFormValid = useMemo(() => {
+
+  return (
+
+    validateName(formValues.name) === "" &&
+
+    validateEmail(formValues.email) === "" &&
+
+    validateEnquiryType(
+      formValues.enquiryType
+    ) === "" &&
+
+    validateMessage(
+      formValues.message
+    ) === ""
+
+  );
+
+}, [formValues]);
+
+
 
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>
@@ -65,6 +259,45 @@ export default function ContactSection() {
       setIsSubmitting(false);
     }
     
+  };
+
+  const handleReset = () => {
+    const hasData = Object.values(formValues).some(
+      (value) => value.trim() !== ""
+    );
+
+    if (hasData) {
+      const confirmed = window.confirm(
+        "Are you sure you want to clear the form?"
+      );
+
+      if (!confirmed) return;
+    }
+
+    setFormValues({
+      name: "",
+      email: "",
+      organization: "",
+      enquiryType: "",
+      message: "",
+    });
+
+    setErrors({
+      name: "",
+      email: "",
+      enquiryType: "",
+      message: "",
+    });
+
+    setTouched({
+      name: false,
+      email: false,
+      enquiryType: false,
+      message: false,
+    });
+
+    setStatus("idle");
+    setErrorMessage("");
   };
   return (
     <section
@@ -190,10 +423,27 @@ export default function ContactSection() {
                   <input
                     type="text"
                     name="name"
-                    required
                     placeholder="Your name"
-                    className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
+                    value={formValues.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                    className={`mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition
+                    ${
+                      touched.name
+                        ? errors.name
+                          ? "border-red-500 bg-red-50"
+                          : "border-green-500 bg-green-50"
+                        : "border-slate-200"
+                    }
+                    focus:border-violet-500 focus:ring-2 focus:ring-violet-200`}
                   />
+
+                  {touched.name && errors.name && (
+                    <p className="mt-1 text-xs text-red-600">
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -204,10 +454,33 @@ export default function ContactSection() {
                   <input
                     type="email"
                     name="email"
-                    required
                     placeholder="you@example.com"
-                    className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
+                    value={formValues.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                    className={`mt-2 w-full rounded-xl border px-4 py-3 text-sm outline-none transition
+                    ${
+                      touched.email
+                        ? errors.email
+                          ? "border-red-500 bg-red-50"
+                          : "border-green-500 bg-green-50"
+                        : "border-slate-200"
+                    }
+                    focus:border-violet-500 focus:ring-2 focus:ring-violet-200`}
                   />
+
+                  {touched.email && errors.email && (
+                    <p className="mt-1 text-xs text-red-600">
+                      {errors.email}
+                    </p>
+                  )}
+
+                  {touched.email && !errors.email && formValues.email && (
+                    <p className="mt-1 text-xs text-green-600">
+                      ✓ Email looks good.
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -220,8 +493,10 @@ export default function ContactSection() {
                 <input
                   type="text"
                   name="organization"
-                  placeholder="University, company, organization, etc."
-                  className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
+                  placeholder="University, company, organization"
+                  value={formValues.organization}
+                  onChange={handleChange}
+                  className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-violet-500 focus:ring-2 focus:ring-violet-200"
                 />
               </div>
 
@@ -233,20 +508,51 @@ export default function ContactSection() {
                 
                 <select
                   name="enquiryType"
-                  defaultValue=""
+                  value={formValues.enquiryType}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   required
-                  className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600 outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
+                  className={`mt-2 w-full rounded-xl border bg-white px-4 py-3 text-sm outline-none transition
+                  ${
+                    touched.enquiryType
+                      ? errors.enquiryType
+                        ? "border-red-500"
+                        : "border-green-500"
+                      : "border-slate-200"
+                  }`}
                 >
-                  <option value="" disabled>
+                  <option value="">
                     Select enquiry type
                   </option>
 
-                  <option>Research Collaboration</option>
-                  <option>Academic Partnership</option>
-                  <option>Industry Collaboration</option>
-                  <option>Technology Development</option>
-                  <option>General Enquiry</option>
+                  <option>
+                    Research Collaboration
+                  </option>
+
+                  <option>
+                    Academic Partnership
+                  </option>
+
+                  <option>
+                    Industry Collaboration
+                  </option>
+
+                  <option>
+                    Technology Development
+                  </option>
+
+                  <option>
+                    General Enquiry
+                  </option>
+
                 </select>
+
+                {touched.enquiryType &&
+                  errors.enquiryType && (
+                    <p className="mt-1 text-xs text-red-600">
+                      {errors.enquiryType}
+                    </p>
+                )}
               </div>
 
               {/* Message */}
@@ -258,38 +564,110 @@ export default function ContactSection() {
                 <textarea
                   rows={6}
                   name="message"
-                  required
                   placeholder="Tell us about your enquiry or idea..."
-                  className="mt-2 w-full resize-none rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
+                  value={formValues.message}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  required
+                  maxLength={500}
+                  className={`mt-2 w-full resize-none rounded-xl border px-4 py-3 text-sm outline-none transition
+                  ${
+                    touched.message
+                      ? errors.message
+                        ? "border-red-500 bg-red-50"
+                        : "border-green-500 bg-green-50"
+                      : "border-slate-200"
+                  }
+                  focus:border-violet-500 focus:ring-2 focus:ring-violet-200`}
                 />
+
+                <div className="mt-1 flex justify-between">
+
+                {touched.message &&
+                errors.message && (
+
+                <p className="text-xs text-red-600">
+
+                {errors.message}
+
+                </p>
+
+                )}
+
+                <p
+                className={`text-xs ${
+                formValues.message.length >
+                450
+                ? "text-orange-500"
+                : "text-slate-500"
+                }`}
+                >
+
+                {formValues.message.length}/500
+
+                </p>
+
+                </div>
               </div>
 
-              <button
+              <div className="flex flex-col gap-3 sm:flex-row">
+
+                <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !isFormValid}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:shadow-lg sm:w-auto"
               >
-                {isSubmitting ? "Sending..." : "Send Enquiry"}
+                {isSubmitting
+                  ? "Sending..."
+                  : isFormValid
+                  ? "Send Enquiry"
+                  : "Complete Required Fields"}
                 {!isSubmitting && <Send className="h-4 w-4" />}
                 
               </button>
-              {status === "success" && (
-                <p
-                  role="status"
-                  className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700"
-                >
-                  Thank you. Your enquiry has been submitted successfully.
-                </p>
-              )}
 
-              {status === "error" && (
-                <p
-                  role="alert"
-                  className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
-                >
-                  {errorMessage}
-                </p>
-              )}
+              <button
+                type="button"
+                onClick={handleReset}
+                disabled={isSubmitting}
+                className="rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 disabled:opacity-50"
+              >
+                Reset
+              </button>
+              </div>
+
+              
+              {status === "success" && (
+                  <div className="mt-6 rounded-2xl border border-green-200 bg-green-50 p-6 text-center">
+                    <div className="text-5xl">✅</div>
+
+                    <h3 className="mt-3 text-xl font-semibold text-green-800">
+                      Enquiry Submitted Successfully
+                    </h3>
+
+                    <p className="mt-2 text-sm text-green-700">
+                      Thank you for contacting
+                      <strong> DLAXMI INFOTECH LLP</strong>.
+                    </p>
+
+                    <p className="mt-2 text-sm text-green-700">
+                      We have received your enquiry successfully.
+                    </p>
+
+                    <p className="mt-2 text-sm text-green-700">
+                      Our team will review your enquiry and
+                      respond as soon as possible.
+                    </p>
+                  </div>
+                )}
+
+              {status === "error" && errorMessage && (
+                <div className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4">
+                  <p className="text-sm font-medium text-red-700">
+                    {errorMessage}
+                  </p>
+                </div>
+              )}              
 
             </form>
           </motion.div>

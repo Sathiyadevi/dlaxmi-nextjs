@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-
-const COMPANY_NAME = "DLAXMI INFOTECH LLP";
 function escapeHtml(value: string) {
   return value
     .replace(/&/g, "&amp;")
@@ -29,8 +27,40 @@ export async function POST(request: Request) {
     const safeEnquiryType = escapeHtml(String(enquiryType));
     const safeMessage = escapeHtml(String(message));
     const safeOrganization = escapeHtml(String(organization ?? ""));
+
+    const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     const normalizedEmail = email.trim().toLowerCase();
     
+    if (!normalizedEmail) {
+      return NextResponse.json(
+        { message: "Email address is required." },
+        { status: 400 }
+      );
+    }
+
+    if (!emailPattern.test(normalizedEmail)) {
+      return NextResponse.json(
+        { message: "Please enter a valid email address." },
+        { status: 400 }
+      );
+    }
+    
+    const blockedDomains = [
+      "mailinator.com",
+      "10minutemail.com",
+      "guerrillamail.com",
+      "tempmail.com",
+    ];
+
+     const domain = normalizedEmail.split("@")[1];
+
+    if (blockedDomains.includes(domain)) {
+      return NextResponse.json(
+        { message: "Temporary email addresses are not allowed." },
+        { status: 400 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -43,7 +73,7 @@ export async function POST(request: Request) {
       from: `"DLAXMI Website" <${process.env.GMAIL_USER}>`,
       to: process.env.GMAIL_USER,
 
-      replyTo: normalizedEmail,
+      replyTo: email,
 
       subject: `Website Enquiry: ${safeEnquiryType}`,
 
@@ -51,7 +81,7 @@ export async function POST(request: Request) {
       New enquiry received from the DLAXMI INFOTECH LLP website.
 
       Name: ${safeName}
-      Email: ${normalizedEmail}
+      Email: ${email}
       Organization: ${safeOrganization || "Not provided"}
       Enquiry Type: ${safeEnquiryType}
 
@@ -63,7 +93,7 @@ export async function POST(request: Request) {
           // Send acknowledgement email to the visitor
       await transporter.sendMail({
         from: `"DLAXMI INFOTECH LLP" <${process.env.GMAIL_USER}>`,
-        to: normalizedEmail,
+        to: email,
 
         subject: "Thank you for contacting DLAXMI INFOTECH LLP",
 
