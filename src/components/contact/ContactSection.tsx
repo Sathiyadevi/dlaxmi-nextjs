@@ -15,6 +15,8 @@ export default function ContactSection() {
     "idle" | "success" | "error"
   >("idle");
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>
   ) => {
@@ -41,18 +43,28 @@ export default function ContactSection() {
         }),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error("Unable to send enquiry");
+        setErrorMessage(data.message || "Unable to send enquiry.");
+        setStatus("error");
+        return;
       }
 
+      setErrorMessage("");
       setStatus("success");
       form.reset();
+
     } catch (error) {
-      console.error("Contact form error:", error);
+      console.error(error);
+
+      setErrorMessage("Unable to connect to the server.");
       setStatus("error");
+
     } finally {
       setIsSubmitting(false);
     }
+    
   };
   return (
     <section
@@ -275,7 +287,7 @@ export default function ContactSection() {
                   role="alert"
                   className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
                 >
-                  We couldn&apos;t send your enquiry. Please try again.
+                  {errorMessage}
                 </p>
               )}
 
